@@ -15,9 +15,10 @@ pipeline {
         stage("docker login") {
             steps {
                 echo " login"
-                withCredentials([usernamePassword(credentialsId: 'eureka-server', usernameVariable: 'ameeerka', passwordVariable: 'Frnbvtkm3')]) {
-                    sh """
-                    docker login -u $USERNAME -p $PASSWORD
+                withCredentials([usernamePassword(usernameVariable: 'ameeerka', passwordVariable: 'Frnbvtkm3')]) {
+                    sh
+                    """
+                    docker login -u ameeerka -p Frnbvtkm3
                     """
                 }
             }
@@ -25,7 +26,7 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo " start building image"
-                dir ('eureka-server/src/docker/Dockerfile') {
+                dir ('docker/Dockerfile') {
                 	sh 'docker build -t ameeerka/eureka-server:latest . '
                 }
             }

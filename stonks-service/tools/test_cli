@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/shell
 #additional option inside scenario
 set -euf -o pipefail
 D=$(dirname $BASH_SOURCE)

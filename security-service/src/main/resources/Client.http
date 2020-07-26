@@ -5,8 +5,10 @@ Accept: application/json
 POST http://localhost:8080/signUp
 Content-Type: application/json
 
-{ "email": "prusla@gmail.com",
+{
+  "email": "prusla@gmail.com",
   "password": "123456","passwordRepeat": "123456",
   "g-recaptcha-response": "1",
-  "remember-me":"on"}
+  "remember-me":"on"
+}
 ###Sign Up
