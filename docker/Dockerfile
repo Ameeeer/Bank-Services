@@ -1,4 +1,4 @@
 FROM openjdk:12-jdk-alpine
 COPY target/*.jar app.jar
-EXPOSE
+EXPOSE 8088
 ENTRYPOINT ["java","-jar","/app.jar"]
