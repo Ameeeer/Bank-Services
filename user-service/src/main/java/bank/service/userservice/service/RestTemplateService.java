@@ -2,6 +2,7 @@ package bank.service.userservice.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,11 +14,13 @@ import org.springframework.web.client.RestTemplate;
 @Service
 @RequiredArgsConstructor
 public class RestTemplateService {
+    @Value("${stonks-service.data.url:/**}")
+    private final String url;
     private final RestTemplate restTemplate;
 
     @HystrixCommand(fallbackMethod = "failed")
     public String data() {
-        String response = restTemplate.getForObject("http://stonks-service/data", String.class);
+        String response = restTemplate.getForObject(url, String.class);
         //Log.log(Log.Level.INFO, response);
         return response;
     }
